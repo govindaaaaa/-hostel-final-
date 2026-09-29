@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5001;
 // Security headers
 app.use(helmet());
 
-// CORS: allow local development and configured frontend URL
+// CORS: allow local development, configured frontend, and Vercel deployments
 const allowedOrigins = [
   "http://localhost:5173",
   process.env.FRONTEND_URL
@@ -29,13 +29,23 @@ const allowedOrigins = [
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests without an Origin header, such as health checks.
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    // Exact production/local origins.
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // Allow HTTPS Vercel preview and production deployment domains.
+    if (/^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
       return callback(null, true);
     }
 
     return callback(new Error("Origin not allowed by CORS"));
   },
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
