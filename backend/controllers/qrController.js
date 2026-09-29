@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 const QRCode = require("qrcode");
-const QRToken = require("../models/QRToken");
-const Student = require("../models/Student");
+const QRToken = require("../models/qrtoken");
+const Student = require("../models/student");
 
 const generateQR = async (req, res) => {
   try {

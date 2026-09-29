@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 
 const Student = require("../models/student");
-const Guard = require("../models/Guard");
+const Guard = require("../models/guard");
 const generateToken = require("../utils/generateToken");
 
 // Register a student

@@ -1,4 +1,4 @@
-const Student = require("../models/Student");
+const Student = require("../models/student");
 const ScanLog = require("../models/ScanLog");
 
 // GET /api/student/profile

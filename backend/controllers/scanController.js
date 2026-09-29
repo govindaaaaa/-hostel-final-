@@ -1,9 +1,9 @@
 const crypto = require("crypto");
 const mongoose = require("mongoose");
 
-const QRToken = require("../models/QRToken");
-const Student = require("../models/Student");
-const Guard = require("../models/Guard");
+const QRToken = require("../models/qrtoken");
+const Student = require("../models/student");
+const Guard = require("../models/guard");
 const ScanLog = require("../models/ScanLog");
 
 const scanQR = async (req, res) => {

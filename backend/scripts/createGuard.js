@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const Guard = require("../models/Guard");
+const Guard = require("../models/guard");
 
 const createGuard = async () => {
   try {
